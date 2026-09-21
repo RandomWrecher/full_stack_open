@@ -3,8 +3,6 @@ sequenceDiagram
     participant browser
     participant server
 
-    Note left of browser: User inputs text
-    Note left of browser: User clicks the save button
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
     activate server
     server-->>browser: 200 OK return spa html file
@@ -20,10 +18,11 @@ sequenceDiagram
     server-->>browser: 200 OK return main.js file
     deactivate server
 
-    Note left of browser: Browser executes the JavaScript code in main.js
+    Note left of browser: Browser executes the JavaScript code in  main.js
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa/data.json
     activate server
     server-->>browser: 200 OK return data.json file
     deactivate server
+    Note left of browser: callback function executes and displays data
 ```

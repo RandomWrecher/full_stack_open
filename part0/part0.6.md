@@ -3,25 +3,10 @@ sequenceDiagram
     participant browser
     participant server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+    Note left of browser: User clicks "save"
+    Note left of browser: Event handler updates notes list, re-renders the DOM
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
     activate server
-    server-->>browser: 200 OK return spa html file
-    deactivate server
-
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa/main.css
-    activate server
-    server-->>browser: 200 OK return main.css file
-    deactivate server
-
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa/main.js
-    activate server
-    server-->>browser: 200 OK return main.js file
-    deactivate server
-
-    Note left of browser: Browser executes the JavaScript code in main.js
-
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa/data.json
-    activate server
-    server-->>browser: 200 OK return data.json file
+    server-->>browser: 201 Created 
     deactivate server
 ```
